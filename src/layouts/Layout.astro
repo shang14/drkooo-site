@@ -1,0 +1,36 @@
+---
+const { title, description = "dr.KOoo - 个人作品集与项目展示" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+      @import "../styles/global.css";
+    </style>
+  </head>
+  <body class="antialiased">
+    <slot />
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.gsap) {
+          window.gsap.registerPlugin(window.ScrollTrigger);
+          
+          // 页面加载动画
+          window.gsap.fromTo("body", 
+            { opacity: 0 }, 
+            { opacity: 1, duration: 0.8, ease: "power2.out" }
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

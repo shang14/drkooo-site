@@ -1,0 +1,14 @@
+---
+const { src, alt, width = 400, height = 300, class: className = '', loading = 'lazy' } = Astro.props;
+---
+
+<Image 
+  src={src} 
+  alt={alt} 
+  width={width} 
+  height={height} 
+  loading={loading}
+  class={className}
+  format="webp"
+  quality={80}
+/>

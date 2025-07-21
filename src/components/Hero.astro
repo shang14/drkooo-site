@@ -1,0 +1,66 @@
+---
+---
+
+<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 pt-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <!-- 文本内容 -->
+      <div class="text-center md:text-left">
+        <h1 id="hero-title" class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+          Hi, I'm <span class="text-blue-600">dr.KOoo</span>
+        </h1>
+        <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-600 mb-8 max-w-xl mx-auto md:mx-0">
+          A passionate developer creating modern applications with a focus on user experience.
+        </p>
+        <div id="hero-cta" class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+            View My Work
+          </a>
+          <a href="#contact" class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300">
+            Get In Touch
+          </a>
+        </div>
+      </div>
+      
+      <!-- 3D 模型占位符 -->
+      <div id="hero-3d" class="mt-12 md:mt-0">
+        <div class="relative mx-auto w-72 h-72 md:w-96 md:h-96">
+          <div class="w-full h-full bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+            <div class="text-white text-center">
+              <div class="text-4xl mb-2">🧊</div>
+              <div class="text-lg">3D Model Placeholder</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.gsap) {
+      const tl = window.gsap.timeline();
+      
+      tl.fromTo("#hero-title", 
+        { y: 50, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+      )
+      .fromTo("#hero-subtitle", 
+        { y: 30, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 
+        "-=0.5"
+      )
+      .fromTo("#hero-cta", 
+        { y: 30, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 
+        "-=0.3"
+      )
+      .fromTo("#hero-3d", 
+        { y: 50, opacity: 0, scale: 0.8 }, 
+        { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power3.out" }, 
+        "-=0.3"
+      );
+    }
+  });
+</script>
