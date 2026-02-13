@@ -1,59 +1,243 @@
----
----
+<nav id="navbar" class="sticky top-0 left-0 right-0 z-50 border-b border-primary glass transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="h-16 flex items-center justify-between">
+      <a href="/" class="inline-flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full border border-[var(--line)] bg-[var(--bg-elev)] text-accent font-bold text-sm grid place-items-center">K</span>
+        <span class="font-semibold tracking-tight">dr.KOoo</span>
+      </a>
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <!-- Logo -->
-      <div class="flex-shrink-0">
-        <a href="/" class="text-2xl font-bold text-gray-900">
-          dr.KOoo
-        </a>
+      <div class="hidden md:flex items-center gap-1 rounded-full border border-primary bg-card p-1">
+        <a href="#about" class="nav-link px-3.5 py-1.5 rounded-full text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.about">关于</a>
+        <a href="#projects" class="nav-link px-3.5 py-1.5 rounded-full text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.projects">项目</a>
+        <a href="#skills" class="nav-link px-3.5 py-1.5 rounded-full text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.skills">技能</a>
+        <a href="#experience" class="nav-link px-3.5 py-1.5 rounded-full text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.experience">经历</a>
+        <a href="#contact" class="nav-link px-3.5 py-1.5 rounded-full text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.contact">联系</a>
       </div>
-      
-      <!-- Desktop Navigation -->
-      <div class="hidden md:block">
-        <div class="ml-10 flex items-baseline space-x-8">
-          <a href="#projects" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-            Projects
-          </a>
-          <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-            About
-          </a>
-          <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-            Contact
-          </a>
+
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" class="w-9 h-9 rounded-full border border-primary grid place-items-center text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n-aria-label="nav.themeToggle" aria-label="Toggle theme">
+          <svg id="sun-icon" class="w-4 h-4 absolute opacity-0 scale-90 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21m9-9h-2.25M5.25 12H3m14.364 6.364l-1.591-1.591M8.227 8.227 6.636 6.636m10.728 0-1.591 1.591M8.227 15.773l-1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+          <svg id="moon-icon" class="w-4 h-4 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+        </button>
+
+        <div class="hidden sm:block relative">
+          <button id="lang-menu-button" type="button" class="inline-flex items-center gap-1 rounded-full border border-primary bg-card px-3 py-1.5 text-xs text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" aria-haspopup="menu" aria-expanded="false" data-i18n-aria-label="nav.language">
+            <span id="lang-current-desktop">中</span>
+            <svg id="lang-chevron-desktop" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+          </button>
+          <div id="lang-menu" class="absolute right-0 mt-2 w-28 rounded-xl border border-primary bg-card p-1 shadow-lg opacity-0 invisible translate-y-1 scale-[0.98] pointer-events-none transition-all duration-200">
+            <button type="button" data-lang="zh" class="lang-option w-full text-left px-2.5 py-1.5 text-xs rounded-lg text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.lang.zh">中</button>
+            <button type="button" data-lang="en" class="lang-option w-full text-left px-2.5 py-1.5 text-xs rounded-lg text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.lang.en">EN</button>
+            <button type="button" data-lang="ja" class="lang-option w-full text-left px-2.5 py-1.5 text-xs rounded-lg text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.lang.ja">日</button>
+          </div>
         </div>
-      </div>
-      
-      <!-- Mobile menu button -->
-      <div class="md:hidden">
-        <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+
+        <a href="#contact" class="hidden sm:inline-flex btn btn-primary text-sm" data-i18n="nav.cta">合作咨询</a>
+
+        <button id="mobile-menu-button" class="md:hidden w-9 h-9 rounded-full border border-primary grid place-items-center text-secondary hover:text-primary hover:bg-[var(--accent-soft)]" data-i18n-aria-label="nav.menuToggle" aria-label="Toggle menu">
+          <svg id="menu-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+          <svg id="close-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
         </button>
       </div>
     </div>
   </div>
-  
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Projects</a>
-      <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">About</a>
-      <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600">Contact</a>
+
+  <div id="mobile-menu" class="md:hidden hidden border-t border-primary bg-card">
+    <div class="px-4 py-4 flex flex-col gap-1">
+      <a href="#about" class="mobile-nav-link px-3.5 py-2.5 rounded-xl text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.about">关于</a>
+      <a href="#projects" class="mobile-nav-link px-3.5 py-2.5 rounded-xl text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.projects">项目</a>
+      <a href="#skills" class="mobile-nav-link px-3.5 py-2.5 rounded-xl text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.skills">技能</a>
+      <a href="#experience" class="mobile-nav-link px-3.5 py-2.5 rounded-xl text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.experience">经历</a>
+      <a href="#contact" class="mobile-nav-link px-3.5 py-2.5 rounded-xl text-sm text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.contact">联系</a>
+      <div class="mt-2 relative w-fit">
+        <button id="lang-menu-button-mobile" type="button" class="inline-flex items-center gap-1 rounded-full border border-primary bg-[var(--bg-soft)] px-3 py-1.5 text-xs text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" aria-haspopup="menu" aria-expanded="false" data-i18n-aria-label="nav.language">
+          <span id="lang-current-mobile">中</span>
+          <svg id="lang-chevron-mobile" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+        </button>
+        <div id="lang-menu-mobile" class="absolute left-0 mt-2 w-28 rounded-xl border border-primary bg-card p-1 shadow-lg opacity-0 invisible translate-y-1 scale-[0.98] pointer-events-none transition-all duration-200">
+          <button type="button" data-lang="zh" class="lang-option w-full text-left px-2.5 py-1.5 text-xs rounded-lg text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.lang.zh">中</button>
+          <button type="button" data-lang="en" class="lang-option w-full text-left px-2.5 py-1.5 text-xs rounded-lg text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.lang.en">EN</button>
+          <button type="button" data-lang="ja" class="lang-option w-full text-left px-2.5 py-1.5 text-xs rounded-lg text-secondary hover:text-primary hover:bg-[var(--accent-soft)] transition-colors" data-i18n="nav.lang.ja">日</button>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuButton?.addEventListener('click', function() {
-      mobileMenu?.classList.toggle('hidden');
+  function getActiveScrollRoot() {
+    const root = document.querySelector(".site-content");
+    if (!root) return null;
+    const style = window.getComputedStyle(root);
+    const overflowY = style.overflowY;
+    const isScrollable = (overflowY === "auto" || overflowY === "scroll") && root.scrollHeight > root.clientHeight + 1;
+    return isScrollable ? root : null;
+  }
+
+  function updateThemeIcons() {
+    const theme = document.documentElement.getAttribute("data-theme");
+    const sunIcon = document.getElementById("sun-icon");
+    const moonIcon = document.getElementById("moon-icon");
+
+    if (theme === "dark") {
+      sunIcon?.classList.remove("opacity-0", "scale-90");
+      moonIcon?.classList.add("opacity-0", "scale-90");
+    } else {
+      sunIcon?.classList.add("opacity-0", "scale-90");
+      moonIcon?.classList.remove("opacity-0", "scale-90");
+    }
+  }
+
+  function updateActiveNavLink() {
+    const scrollRoot = getActiveScrollRoot();
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+    let current = "";
+    const scrollTop = scrollRoot ? scrollRoot.scrollTop : window.scrollY;
+
+    sections.forEach((section) => {
+      const top = section.offsetTop - 110;
+      const bottom = top + section.offsetHeight;
+      if (scrollTop >= top && scrollTop < bottom) current = section.id;
     });
+
+    navLinks.forEach((link) => {
+      const active = link.getAttribute("href") === `#${current}`;
+      link.classList.toggle("bg-[var(--accent-soft)]", active);
+      link.classList.toggle("text-primary", active);
+      link.classList.toggle("text-secondary", !active);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    updateThemeIcons();
+    updateActiveNavLink();
+
+    document.getElementById("theme-toggle")?.addEventListener("click", () => {
+      if (window.toggleTheme) {
+        window.toggleTheme();
+        updateThemeIcons();
+      }
+    });
+
+    window.addEventListener("themechange", updateThemeIcons);
+
+    const button = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const langMenuButton = document.getElementById("lang-menu-button");
+    const langMenu = document.getElementById("lang-menu");
+    const langMenuButtonMobile = document.getElementById("lang-menu-button-mobile");
+    const langMenuMobile = document.getElementById("lang-menu-mobile");
+    const langChevronDesktop = document.getElementById("lang-chevron-desktop");
+    const langChevronMobile = document.getElementById("lang-chevron-mobile");
+    const langCurrentDesktop = document.getElementById("lang-current-desktop");
+    const langCurrentMobile = document.getElementById("lang-current-mobile");
+
+    function getLangLabel(lang) {
+      if (lang === "en") return "EN";
+      if (lang === "ja") return "日";
+      return "中";
+    }
+
+    function syncCurrentLanguageLabel() {
+      const lang = window.getLanguage ? window.getLanguage() : "zh";
+      const label = getLangLabel(lang);
+      if (langCurrentDesktop) langCurrentDesktop.textContent = label;
+      if (langCurrentMobile) langCurrentMobile.textContent = label;
+    }
+
+    function closeLangMenus() {
+      langMenu?.classList.add("opacity-0", "invisible", "translate-y-1", "scale-[0.98]", "pointer-events-none");
+      langMenu?.classList.remove("opacity-100", "visible", "translate-y-0", "scale-100", "pointer-events-auto");
+      langMenuMobile?.classList.add("opacity-0", "invisible", "translate-y-1", "scale-[0.98]", "pointer-events-none");
+      langMenuMobile?.classList.remove("opacity-100", "visible", "translate-y-0", "scale-100", "pointer-events-auto");
+      langChevronDesktop?.classList.remove("rotate-180");
+      langChevronMobile?.classList.remove("rotate-180");
+      langMenuButton?.classList.remove("bg-[var(--accent-soft)]", "text-primary");
+      langMenuButtonMobile?.classList.remove("bg-[var(--accent-soft)]", "text-primary");
+      langMenuButton?.setAttribute("aria-expanded", "false");
+      langMenuButtonMobile?.setAttribute("aria-expanded", "false");
+    }
+
+    function openLangMenu(target) {
+      if (target === "desktop") {
+        closeLangMenus();
+        langMenu?.classList.remove("opacity-0", "invisible", "translate-y-1", "scale-[0.98]", "pointer-events-none");
+        langMenu?.classList.add("opacity-100", "visible", "translate-y-0", "scale-100", "pointer-events-auto");
+        langChevronDesktop?.classList.add("rotate-180");
+        langMenuButton?.classList.add("bg-[var(--accent-soft)]", "text-primary");
+        langMenuButton?.setAttribute("aria-expanded", "true");
+      } else {
+        closeLangMenus();
+        langMenuMobile?.classList.remove("opacity-0", "invisible", "translate-y-1", "scale-[0.98]", "pointer-events-none");
+        langMenuMobile?.classList.add("opacity-100", "visible", "translate-y-0", "scale-100", "pointer-events-auto");
+        langChevronMobile?.classList.add("rotate-180");
+        langMenuButtonMobile?.classList.add("bg-[var(--accent-soft)]", "text-primary");
+        langMenuButtonMobile?.setAttribute("aria-expanded", "true");
+      }
+    }
+
+    function isMenuOpen(menuEl) {
+      return menuEl?.classList.contains("opacity-100");
+    }
+
+    button?.addEventListener("click", () => {
+      menu?.classList.toggle("hidden");
+      menuIcon?.classList.toggle("hidden");
+      closeIcon?.classList.toggle("hidden");
+      closeLangMenus();
+    });
+
+    document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu?.classList.add("hidden");
+        menuIcon?.classList.remove("hidden");
+        closeIcon?.classList.add("hidden");
+        closeLangMenus();
+      });
+    });
+
+    langMenuButton?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (isMenuOpen(langMenu)) {
+        closeLangMenus();
+      } else {
+        openLangMenu("desktop");
+      }
+    });
+
+    langMenuButtonMobile?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (isMenuOpen(langMenuMobile)) {
+        closeLangMenus();
+      } else {
+        openLangMenu("mobile");
+      }
+    });
+
+    document.querySelectorAll(".lang-option").forEach((option) => {
+      option.addEventListener("click", () => {
+        closeLangMenus();
+      });
+    });
+
+    document.addEventListener("click", () => {
+      closeLangMenus();
+    });
+
+    window.addEventListener("languagechange", syncCurrentLanguageLabel);
+    syncCurrentLanguageLabel();
+
+    const navbar = document.getElementById("navbar");
+    const scrollRoot = getActiveScrollRoot();
+    const scrollTarget = scrollRoot || window;
+    scrollTarget.addEventListener("scroll", () => {
+      const scrollTop = scrollRoot ? scrollRoot.scrollTop : window.scrollY;
+      navbar?.classList.toggle("scrolled", scrollTop > 12);
+      updateActiveNavLink();
+      closeLangMenus();
+    }, { passive: true });
   });
 </script>

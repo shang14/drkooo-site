@@ -1,0 +1,24 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-primary bg-card">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <p class="font-semibold">dr.KOoo</p>
+        <p class="text-sm text-secondary mt-1" data-i18n="footer.tagline">Independent Developer · Crafting calm and useful digital products.</p>
+      </div>
+      <div class="flex items-center gap-4 text-sm text-secondary">
+        <a href="#projects" class="hover:text-primary transition-colors" data-i18n="footer.projects">Projects</a>
+        <a href="#contact" class="hover:text-primary transition-colors" data-i18n="footer.contact">Contact</a>
+        <a href="https://github.com/drkooo" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">GitHub</a>
+      </div>
+    </div>
+
+    <div class="mt-6 pt-5 border-t border-primary text-xs text-secondary flex flex-col sm:flex-row justify-between gap-2">
+      <span data-i18n="footer.rights">© {year} dr.KOoo. All rights reserved.</span>
+      <span data-i18n="footer.built">Built with Astro.</span>
+    </div>
+  </div>
+</footer>

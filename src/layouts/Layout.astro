@@ -1,5 +1,6 @@
 ---
-const { title, description = "dr.KOoo - 个人作品集与项目展示" } = Astro.props;
+import '../styles/global.css';
+const { title, description = "dr.KOoo - 独立开发者" } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -10,25 +11,472 @@ const { title, description = "dr.KOoo - 个人作品集与项目展示" } = Astr
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;800&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet" />
+
     <title>{title}</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <style>
-      @import "../styles/global.css";
-    </style>
+
+    <script is:inline>
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
-  <body class="antialiased">
+  <body class="antialiased min-h-screen">
     <slot />
+
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        if (window.gsap) {
-          window.gsap.registerPlugin(window.ScrollTrigger);
-          
-          // 页面加载动画
-          window.gsap.fromTo("body", 
-            { opacity: 0 }, 
-            { opacity: 1, duration: 0.8, ease: "power2.out" }
-          );
+      const translations = {
+        zh: {
+          "nav.about": "关于",
+          "nav.projects": "项目",
+          "nav.skills": "技能",
+          "nav.experience": "经历",
+          "nav.contact": "联系",
+          "nav.cta": "合作咨询",
+          "nav.language": "切换语言",
+          "nav.themeToggle": "切换主题",
+          "nav.menuToggle": "切换菜单",
+          "nav.lang.zh": "中",
+          "nav.lang.en": "EN",
+          "nav.lang.ja": "日",
+          "hero.badge": "Independent Developer · drkooo.com",
+          "hero.titlePrefix": "打磨克制、顺滑、",
+          "hero.titleHighlight": "长期可维护",
+          "hero.titleSuffix": " 的数字产品",
+          "hero.desc": "我专注于全栈开发与交互体验，擅长把复杂问题拆成清晰可落地的产品路径。从视觉细节到工程质量，都以“上线可用、长期可迭代”为标准。",
+          "hero.ctaDemo": "体验 CubeCut Demo",
+          "hero.ctaProjects": "查看项目",
+          "hero.ctaContact": "联系我",
+          "hero.note": "适合品牌官网改版、互动体验页、可视化产品落地。",
+          "hero.coverPlayable": "Playable Demo",
+          "hero.coverVisit": "Visit",
+          "hero.nowBuilding": "Now Building",
+          "hero.cardDesc": "面向几何教学与探索的 3D 可视化工具，支持实时切割与形态观察，已上线可直接体验。",
+          "hero.stack": "Stack",
+          "hero.status": "状态",
+          "hero.statusOnline": "已上线",
+          "hero.demo": "Demo",
+          "about.badge": "About",
+          "about.title": "关于我与做事方式",
+          "about.subtitle": "偏爱简约与秩序感，关注真实业务价值，也关注交互和代码的长期可持续。",
+          "about.mainTitle": "独立开发者视角",
+          "about.p1": "我将设计与工程看作同一个系统，不把 UI、交互和性能割裂处理。对个人项目和商业项目都坚持同一原则：先建立清晰信息结构，再用克制的视觉语言表达品牌气质。",
+          "about.p2": "在技术上，我熟悉从前端体验到后端交付的完整链路，擅长在有限资源下做稳定迭代。这也是我持续打磨个人站的原因：它既是名片，也是方法论的演示场。",
+          "about.principle1": "工作原则 01",
+          "about.principle1Title": "信息优先，视觉服务内容",
+          "about.principle1Desc": "先让访客快速理解你做什么、做得怎样，再考虑装饰性表达。",
+          "about.principle2": "工作原则 02",
+          "about.principle2Title": "细节克制，但触感要顺滑",
+          "about.principle2Desc": "动效节奏短、反馈明确，保留高级感，避免喧宾夺主的过度动画。",
+          "about.principle3": "工作原则 03",
+          "about.principle3Title": "上线即维护起点",
+          "about.principle3Desc": "组件结构、命名和样式令迭代成本可控，便于后续扩展。",
+          "projects.badge": "Projects",
+          "projects.title": "项目与产品实践",
+          "projects.subtitle": "聚焦可上线、可复用、可持续迭代的项目，而不是只停留在视觉演示。",
+          "projects.featured": "Featured Project",
+          "projects.cubecutDesc": "将立方体切割过程可视化，帮助用户从动态视角理解几何结构，面向教学与兴趣探索场景。",
+          "projects.liveDemo": "在线 Demo",
+          "projects.source": "源码仓库",
+          "projects.coverLivePreview": "Live Preview",
+          "projects.coverOpen": "Open",
+          "projects.rendering": "渲染",
+          "projects.renderingValue": "实时 3D",
+          "projects.focus": "方向",
+          "projects.focusValue": "几何学习",
+          "projects.portfolioDesc": "围绕个人品牌打造的模块化站点，强调信息层级、可维护样式体系与轻量性能。",
+          "projects.prototypesDesc": "持续输出交互原型与微体验实验，验证从视觉语言到用户反馈的完整链路。",
+          "projects.visit": "访问",
+          "skills.badge": "Skills",
+          "skills.title": "技术栈与能力结构",
+          "skills.subtitle": "以完整交付为导向，覆盖产品体验、前端工程和可视化实现。",
+          "skills.workingStyle": "工作方式",
+          "skills.tag1": "理解设计的开发",
+          "skills.tag2": "组件化思维",
+          "skills.tag3": "性能优先",
+          "skills.tag4": "简洁架构",
+          "skills.tag5": "长期可维护",
+          "experience.badge": "Experience",
+          "experience.title": "经历与成长路径",
+          "experience.subtitle": "在不同阶段持续收敛方法论：从实现功能，到关注体验，再到平衡长期维护成本。",
+          "experience.period1": "2023 - 至今",
+          "experience.role1": "独立开发者",
+          "experience.org1": "drkooo.com",
+          "experience.desc1": "围绕个人产品与客户协作项目，负责从需求梳理、视觉设计到前后端落地的完整交付。",
+          "experience.p11": "主导个人项目 CubeCut 的产品化迭代，上线后持续优化交互与渲染性能。",
+          "experience.p12": "为中小团队提供官网与产品页面改版支持，强调设计一致性与维护成本控制。",
+          "experience.p13": "建立可复用组件与样式规范，显著降低后续页面扩展时间。",
+          "experience.period2": "2020 - 2023",
+          "experience.role2": "全栈开发工程师",
+          "experience.org2": "产品与定制项目",
+          "experience.desc2": "负责核心业务功能开发，并与设计、产品协同推进多轮迭代上线。",
+          "experience.p21": "主导多个模块的前端架构改造，提升页面加载速度与可读性。",
+          "experience.p22": "参与 Node.js API 与数据结构设计，缩短需求到上线链路。",
+          "experience.p23": "推动代码评审与提测流程标准化，减少回归问题。",
+          "experience.period3": "2018 - 2020",
+          "experience.role3": "前端开发工程师",
+          "experience.org3": "Web 产品团队",
+          "experience.desc3": "参与企业级 Web 产品建设，完成从页面实现到组件抽象的阶段性成长。",
+          "experience.p31": "承担多条业务线前端开发任务，稳定交付高频需求。",
+          "experience.p32": "积累 UI 组件封装和跨浏览器兼容经验。",
+          "experience.p33": "逐步形成重视语义化结构、性能和可维护性的开发习惯。",
+          "contact.badge": "Contact",
+          "contact.title": "合作与沟通",
+          "contact.subtitle": "如果你正在做产品升级、品牌官网改版，或需要前端与交互落地支持，可以直接联系我。",
+          "contact.preferenceTitle": "沟通偏好",
+          "contact.pref1": "先对齐目标与边界，再拆分迭代计划。",
+          "contact.pref2": "强调交付节奏和可维护实现，不做一次性“炫技页面”。",
+          "contact.pref3": "支持从设计细化到工程落地的协同闭环。",
+          "contact.emailBtn": "发邮件咨询",
+          "contact.githubBtn": "查看 GitHub",
+          "contact.directLinks": "Direct Links",
+          "contact.cubecutDemo": "CubeCut Demo",
+          "contact.response": "响应速度",
+          "contact.responseDesc": "通常在 24 小时内回复。",
+          "footer.tagline": "Independent Developer · Crafting calm and useful digital products.",
+          "footer.projects": "Projects",
+          "footer.contact": "Contact",
+          "footer.rights": "© {year} dr.KOoo. All rights reserved.",
+          "footer.built": "Built with Astro."
+        },
+        en: {
+          "nav.about": "About",
+          "nav.projects": "Projects",
+          "nav.skills": "Skills",
+          "nav.experience": "Experience",
+          "nav.contact": "Contact",
+          "nav.cta": "Work With Me",
+          "nav.language": "Select language",
+          "nav.themeToggle": "Toggle theme",
+          "nav.menuToggle": "Toggle menu",
+          "nav.lang.zh": "中",
+          "nav.lang.en": "EN",
+          "nav.lang.ja": "日",
+          "hero.badge": "Independent Developer · drkooo.com",
+          "hero.titlePrefix": "Crafting calm, smooth,",
+          "hero.titleHighlight": "maintainable",
+          "hero.titleSuffix": " digital products",
+          "hero.desc": "I focus on full-stack development and interaction design, turning complex problems into clear and shippable product paths. From visual details to engineering quality, I optimize for long-term iteration.",
+          "hero.ctaDemo": "Try CubeCut Demo",
+          "hero.ctaProjects": "View Projects",
+          "hero.ctaContact": "Contact Me",
+          "hero.note": "Great fit for brand sites, interactive pages, and data/3D products.",
+          "hero.coverPlayable": "Playable Demo",
+          "hero.coverVisit": "Visit",
+          "hero.nowBuilding": "Now Building",
+          "hero.cardDesc": "A 3D visualization tool for geometry learning and exploration, with real-time slicing interactions and online demo availability.",
+          "hero.stack": "Stack",
+          "hero.status": "Status",
+          "hero.statusOnline": "Online",
+          "hero.demo": "Demo",
+          "about.badge": "About",
+          "about.title": "How I Work",
+          "about.subtitle": "I prefer minimal and structured design, with strong attention to real product value and long-term maintainability.",
+          "about.mainTitle": "Independent Builder Mindset",
+          "about.p1": "I treat design and engineering as one system instead of separate disciplines. For both personal and commercial work, I start with information architecture, then shape the visual language with restraint.",
+          "about.p2": "Technically, I handle the full chain from frontend experience to backend delivery, with stable iteration under limited resources. This portfolio is both my card and my methodology showcase.",
+          "about.principle1": "Principle 01",
+          "about.principle1Title": "Clarity first, visuals support meaning",
+          "about.principle1Desc": "Help visitors quickly understand what you do and how well you do it before decoration.",
+          "about.principle2": "Principle 02",
+          "about.principle2Title": "Restrained details, smooth interaction",
+          "about.principle2Desc": "Use concise motion and clear feedback while preserving sophistication.",
+          "about.principle3": "Principle 03",
+          "about.principle3Title": "Launch is the start of maintenance",
+          "about.principle3Desc": "Structure and naming should keep future iterations cheap and reliable.",
+          "projects.badge": "Projects",
+          "projects.title": "Product Work",
+          "projects.subtitle": "Work focused on real shipping quality, reuse, and sustainable iteration.",
+          "projects.featured": "Featured Project",
+          "projects.cubecutDesc": "Cube slicing visualization that helps users understand geometric structures through interactive 3D exploration.",
+          "projects.liveDemo": "Live Demo",
+          "projects.source": "Source Code",
+          "projects.coverLivePreview": "Live Preview",
+          "projects.coverOpen": "Open",
+          "projects.rendering": "Rendering",
+          "projects.renderingValue": "Real-time 3D",
+          "projects.focus": "Focus",
+          "projects.focusValue": "Geometry Learning",
+          "projects.portfolioDesc": "A modular personal branding site focused on hierarchy, maintainable styles, and lightweight performance.",
+          "projects.prototypesDesc": "Continuous interaction and motion experiments to validate UX language and implementation quality.",
+          "projects.visit": "Visit",
+          "skills.badge": "Skills",
+          "skills.title": "Tech Stack & Capabilities",
+          "skills.subtitle": "Built around end-to-end delivery: product experience, frontend engineering, and visualization.",
+          "skills.workingStyle": "Working Style",
+          "skills.tag1": "Design-aware Development",
+          "skills.tag2": "Component Thinking",
+          "skills.tag3": "Performance First",
+          "skills.tag4": "Simple Architecture",
+          "skills.tag5": "Long-term Maintainability",
+          "experience.badge": "Experience",
+          "experience.title": "Professional Journey",
+          "experience.subtitle": "I keep refining methods across stages: from delivery speed to experience quality and maintainability balance.",
+          "experience.period1": "2023 - Present",
+          "experience.role1": "Independent Developer",
+          "experience.org1": "drkooo.com",
+          "experience.desc1": "Delivering end-to-end work for personal products and client collaborations, from discovery and design to full implementation.",
+          "experience.p11": "Led CubeCut product iterations and continued tuning interaction and rendering performance.",
+          "experience.p12": "Supported SME website and product page redesigns with consistency and maintenance in mind.",
+          "experience.p13": "Built reusable components and style conventions to reduce expansion cost.",
+          "experience.period2": "2020 - 2023",
+          "experience.role2": "Full-Stack Engineer",
+          "experience.org2": "Product & Custom Projects",
+          "experience.desc2": "Owned core features and collaborated closely with design and product through multiple launch cycles.",
+          "experience.p21": "Led frontend architecture upgrades for speed and readability.",
+          "experience.p22": "Contributed to Node.js APIs and data model design for shorter delivery loops.",
+          "experience.p23": "Improved review and QA workflow to reduce regressions.",
+          "experience.period3": "2018 - 2020",
+          "experience.role3": "Frontend Engineer",
+          "experience.org3": "Web Product Team",
+          "experience.desc3": "Built enterprise web interfaces and evolved from page implementation to component abstraction.",
+          "experience.p31": "Delivered frequent requests across multiple product lines.",
+          "experience.p32": "Accumulated component design and cross-browser compatibility experience.",
+          "experience.p33": "Formed solid habits around semantics, performance, and maintainability.",
+          "contact.badge": "Contact",
+          "contact.title": "Collaboration",
+          "contact.subtitle": "If you're planning a product refresh, brand site redesign, or frontend/interaction delivery support, feel free to reach out.",
+          "contact.preferenceTitle": "How I Collaborate",
+          "contact.pref1": "Align goals and scope first, then split into iterative milestones.",
+          "contact.pref2": "Prioritize maintainable delivery over one-off flashy pages.",
+          "contact.pref3": "Support a full loop from design refinement to implementation.",
+          "contact.emailBtn": "Email Me",
+          "contact.githubBtn": "View GitHub",
+          "contact.directLinks": "Direct Links",
+          "contact.cubecutDemo": "CubeCut Demo",
+          "contact.response": "Response",
+          "contact.responseDesc": "Usually within 24 hours.",
+          "footer.tagline": "Independent Developer · Crafting calm and useful digital products.",
+          "footer.projects": "Projects",
+          "footer.contact": "Contact",
+          "footer.rights": "© {year} dr.KOoo. All rights reserved.",
+          "footer.built": "Built with Astro."
+        },
+        ja: {
+          "nav.about": "概要",
+          "nav.projects": "プロジェクト",
+          "nav.skills": "スキル",
+          "nav.experience": "経歴",
+          "nav.contact": "連絡",
+          "nav.cta": "相談する",
+          "nav.language": "言語を切り替え",
+          "nav.themeToggle": "テーマ切替",
+          "nav.menuToggle": "メニュー切替",
+          "nav.lang.zh": "中",
+          "nav.lang.en": "EN",
+          "nav.lang.ja": "日",
+          "hero.badge": "Independent Developer · drkooo.com",
+          "hero.titlePrefix": "落ち着きがあり、滑らかで、",
+          "hero.titleHighlight": "長期保守可能な",
+          "hero.titleSuffix": "デジタルプロダクトを作る",
+          "hero.desc": "フルスタック開発とインタラクション設計を軸に、複雑な課題を明確で実装可能なプロダクトへ落とし込みます。見た目から実装品質まで、継続的な改善を前提に設計します。",
+          "hero.ctaDemo": "CubeCut を試す",
+          "hero.ctaProjects": "プロジェクトを見る",
+          "hero.ctaContact": "連絡する",
+          "hero.note": "ブランドサイト改修、インタラクティブページ、可視化プロダクトに対応します。",
+          "hero.coverPlayable": "Playable Demo",
+          "hero.coverVisit": "Visit",
+          "hero.nowBuilding": "Now Building",
+          "hero.cardDesc": "幾何学の学習・探索向け 3D 可視化ツール。リアルタイムの切断操作に対応し、オンラインで体験可能です。",
+          "hero.stack": "Stack",
+          "hero.status": "状態",
+          "hero.statusOnline": "公開中",
+          "hero.demo": "Demo",
+          "about.badge": "About",
+          "about.title": "開発スタイル",
+          "about.subtitle": "ミニマルで秩序ある設計を好み、実際の価値と長期的な保守性を重視します。",
+          "about.mainTitle": "インディー開発者としての視点",
+          "about.p1": "デザインと実装を別物として扱わず、同じシステムとして設計します。個人開発でも商用案件でも、情報設計を先に固めてから視覚言語を整えます。",
+          "about.p2": "フロント体験からバックエンド実装まで一貫して担当でき、限られたリソースでも安定した改善を続けられます。このサイト自体がその方法論の実演です。",
+          "about.principle1": "原則 01",
+          "about.principle1Title": "情報を優先し、見た目は意味を支える",
+          "about.principle1Desc": "まず何を作っているかを明確に伝え、その後で装飾を加えます。",
+          "about.principle2": "原則 02",
+          "about.principle2Title": "抑制された細部、滑らかな体験",
+          "about.principle2Desc": "短く明確なモーションで、上品さと操作性を両立します。",
+          "about.principle3": "原則 03",
+          "about.principle3Title": "公開は保守の始まり",
+          "about.principle3Desc": "構造と命名を整え、将来の拡張コストを下げます。",
+          "projects.badge": "Projects",
+          "projects.title": "プロダクト実績",
+          "projects.subtitle": "公開品質・再利用性・継続改善を重視したプロジェクトです。",
+          "projects.featured": "Featured Project",
+          "projects.cubecutDesc": "立方体の切断を 3D で可視化し、幾何構造を直感的に理解できるようにした学習向けツールです。",
+          "projects.liveDemo": "デモを見る",
+          "projects.source": "ソースコード",
+          "projects.coverLivePreview": "Live Preview",
+          "projects.coverOpen": "Open",
+          "projects.rendering": "Rendering",
+          "projects.renderingValue": "リアルタイム 3D",
+          "projects.focus": "Focus",
+          "projects.focusValue": "幾何学学習",
+          "projects.portfolioDesc": "情報階層・保守性・軽量性を重視した、個人ブランディング向けのモジュール型サイトです。",
+          "projects.prototypesDesc": "UI モーションとインタラクションの継続的な検証を通して、体験と言語の一貫性を高めています。",
+          "projects.visit": "表示",
+          "skills.badge": "Skills",
+          "skills.title": "技術スタックと強み",
+          "skills.subtitle": "プロダクト体験、フロント実装、可視化までを一貫してカバーします。",
+          "skills.workingStyle": "Working Style",
+          "skills.tag1": "Design-aware Development",
+          "skills.tag2": "Component Thinking",
+          "skills.tag3": "Performance First",
+          "skills.tag4": "Simple Architecture",
+          "skills.tag5": "Long-term Maintainability",
+          "experience.badge": "Experience",
+          "experience.title": "経歴と成長",
+          "experience.subtitle": "機能実装から体験品質、そして保守性の最適化へと段階的に改善を重ねてきました。",
+          "experience.period1": "2023 - 現在",
+          "experience.role1": "独立開発者",
+          "experience.org1": "drkooo.com",
+          "experience.desc1": "個人プロダクトとクライアント案件において、要件整理からデザイン、実装まで一気通貫で担当。",
+          "experience.p11": "CubeCut の継続改善を主導し、操作感と描画性能を最適化。",
+          "experience.p12": "中小チーム向けにサイト改修を支援し、統一感と保守性を向上。",
+          "experience.p13": "再利用可能なコンポーネントとスタイル規約を整備。",
+          "experience.period2": "2020 - 2023",
+          "experience.role2": "フルスタックエンジニア",
+          "experience.org2": "プロダクト / 受託開発",
+          "experience.desc2": "主要機能の実装を担当し、デザイン・プロダクトと連携して複数回のリリースを実施。",
+          "experience.p21": "フロント構成を改善し、表示速度と可読性を向上。",
+          "experience.p22": "Node.js API とデータ設計に参加し、開発リードタイムを短縮。",
+          "experience.p23": "レビューとQAフローを標準化し、回帰不具合を削減。",
+          "experience.period3": "2018 - 2020",
+          "experience.role3": "フロントエンドエンジニア",
+          "experience.org3": "Web プロダクトチーム",
+          "experience.desc3": "企業向け Web 製品の開発を担当し、画面実装からコンポーネント設計へ成長。",
+          "experience.p31": "複数業務ラインの高頻度要件を安定してリリース。",
+          "experience.p32": "UIコンポーネント設計とクロスブラウザ対応を蓄積。",
+          "experience.p33": "意味論・性能・保守性を重視する習慣を確立。",
+          "contact.badge": "Contact",
+          "contact.title": "相談・協業",
+          "contact.subtitle": "プロダクト刷新、ブランドサイト改修、フロント実装支援が必要であれば気軽にご連絡ください。",
+          "contact.preferenceTitle": "進め方",
+          "contact.pref1": "まず目的とスコープを合わせ、反復可能な計画に分解します。",
+          "contact.pref2": "一時的な派手さより、保守しやすい実装を優先します。",
+          "contact.pref3": "デザイン調整から実装まで一貫して対応します。",
+          "contact.emailBtn": "メールで相談",
+          "contact.githubBtn": "GitHub を見る",
+          "contact.directLinks": "Direct Links",
+          "contact.cubecutDemo": "CubeCut Demo",
+          "contact.response": "返信目安",
+          "contact.responseDesc": "通常 24 時間以内に返信します。",
+          "footer.tagline": "Independent Developer · Crafting calm and useful digital products.",
+          "footer.projects": "Projects",
+          "footer.contact": "Contact",
+          "footer.rights": "© {year} dr.KOoo. All rights reserved.",
+          "footer.built": "Built with Astro."
+        }
+      };
+
+      function normalizeLang(value) {
+        if (!value) return "zh";
+        const raw = String(value).toLowerCase();
+        if (raw.startsWith("en")) return "en";
+        if (raw.startsWith("ja")) return "ja";
+        return "zh";
+      }
+
+      function renderText(template, payload = {}) {
+        return template.replace(/\{(\w+)\}/g, (_, key) => String(payload[key] ?? ""));
+      }
+
+      function applyI18n(lang) {
+        const dict = translations[lang] || translations.zh;
+        const year = new Date().getFullYear();
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          const text = dict[key] ?? translations.zh[key];
+          if (text) el.textContent = renderText(text, { year });
+        });
+
+        document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-aria-label");
+          const text = dict[key] ?? translations.zh[key];
+          if (text) el.setAttribute("aria-label", text);
+        });
+
+        document.querySelectorAll("[data-lang]").forEach((el) => {
+          const active = el.getAttribute("data-lang") === lang;
+          el.classList.toggle("bg-[var(--accent-soft)]", active);
+          el.classList.toggle("text-primary", active);
+          el.classList.toggle("text-secondary", !active);
+        });
+
+        document.documentElement.lang = lang === "en" ? "en" : lang === "ja" ? "ja" : "zh-CN";
+      }
+
+      window.getLanguage = function () {
+        return normalizeLang(localStorage.getItem("lang") || document.documentElement.getAttribute("data-lang") || navigator.language);
+      };
+
+      window.setLanguage = function (value) {
+        const lang = normalizeLang(value);
+        localStorage.setItem("lang", lang);
+        document.documentElement.setAttribute("data-lang", lang);
+        applyI18n(lang);
+        window.dispatchEvent(new CustomEvent("languagechange", { detail: { lang } }));
+      };
+
+      window.toggleTheme = function () {
+        const html = document.documentElement;
+        const current = html.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        window.dispatchEvent(new CustomEvent("themechange", { detail: { theme: next } }));
+      };
+
+      function getActiveScrollRoot() {
+        const root = document.querySelector(".site-content");
+        if (!root) return null;
+        const style = window.getComputedStyle(root);
+        const overflowY = style.overflowY;
+        const isScrollable = (overflowY === "auto" || overflowY === "scroll") && root.scrollHeight > root.clientHeight + 1;
+        return isScrollable ? root : null;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const initialLang = window.getLanguage();
+        document.documentElement.setAttribute("data-lang", initialLang);
+        applyI18n(initialLang);
+
+        document.querySelectorAll("[data-lang]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const lang = btn.getAttribute("data-lang");
+            if (lang) window.setLanguage(lang);
+          });
+        });
+
+        const scrollRoot = getActiveScrollRoot();
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("in");
+            });
+          },
+          { root: scrollRoot, threshold: 0.14 }
+        );
+
+        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+        // Handle anchor links when using an internal scroll container.
+        if (scrollRoot) {
+          document.addEventListener("click", (e) => {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (!anchor) return;
+            const id = anchor.getAttribute("href")?.slice(1);
+            const target = id && document.getElementById(id);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          });
         }
       });
     </script>

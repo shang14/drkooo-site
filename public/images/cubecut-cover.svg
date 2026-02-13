@@ -1,0 +1,40 @@
+<svg width="1400" height="880" viewBox="0 0 1400 880" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="880" fill="#121311"/>
+  <rect x="22" y="22" width="1356" height="836" rx="24" fill="#1A1C19" stroke="#2E312C" stroke-width="2"/>
+  <rect x="56" y="70" width="1288" height="740" rx="18" fill="#171917"/>
+
+  <g opacity="0.4">
+    <path d="M80 140H1320" stroke="#3B3F39"/>
+    <path d="M80 210H1320" stroke="#343832"/>
+    <path d="M80 280H1320" stroke="#343832"/>
+    <path d="M80 350H1320" stroke="#343832"/>
+    <path d="M80 420H1320" stroke="#343832"/>
+    <path d="M80 490H1320" stroke="#343832"/>
+    <path d="M80 560H1320" stroke="#343832"/>
+    <path d="M80 630H1320" stroke="#343832"/>
+    <path d="M80 700H1320" stroke="#343832"/>
+  </g>
+
+  <g opacity="0.9">
+    <path d="M590 180L830 320L590 460L350 320L590 180Z" fill="#7F6445" fill-opacity="0.28" stroke="#BEA377" stroke-width="3"/>
+    <path d="M590 460V700L830 560V320L590 460Z" fill="#7F6445" fill-opacity="0.2" stroke="#BEA377" stroke-width="3"/>
+    <path d="M590 460V700L350 560V320L590 460Z" fill="#7F6445" fill-opacity="0.13" stroke="#BEA377" stroke-width="3"/>
+    <path d="M350 320L590 180L830 320" stroke="#E8D2A8" stroke-width="2.5" stroke-dasharray="7 9"/>
+    <path d="M350 560L590 700L830 560" stroke="#D5BE95" stroke-width="2.5" stroke-dasharray="7 9"/>
+    <path d="M350 320L350 560M590 180V700M830 320V560" stroke="#CFB386" stroke-width="2"/>
+  </g>
+
+  <g>
+    <path d="M970 238L1184 366L970 494L756 366L970 238Z" fill="#5C4B35" fill-opacity="0.27" stroke="#D7BE94" stroke-width="2.2"/>
+    <path d="M970 494V700L1184 572V366L970 494Z" fill="#5C4B35" fill-opacity="0.18" stroke="#D7BE94" stroke-width="2.2"/>
+    <path d="M970 494V700L756 572V366L970 494Z" fill="#5C4B35" fill-opacity="0.11" stroke="#D7BE94" stroke-width="2.2"/>
+    <path d="M820 286L1120 614" stroke="#F0DFC1" stroke-width="2.4"/>
+  </g>
+
+  <rect x="88" y="92" width="182" height="46" rx="11" fill="#232620" stroke="#3D423A"/>
+  <circle cx="112" cy="115" r="6" fill="#7F6445"/>
+  <text x="130" y="122" fill="#D7CEBE" font-family="Noto Sans JP, sans-serif" font-size="15" letter-spacing="0.02em">CubeCut Live Demo</text>
+
+  <rect x="1098" y="92" width="224" height="42" rx="10" fill="#21231F" stroke="#3D413A"/>
+  <text x="1116" y="118" fill="#E6DECF" font-family="Noto Sans JP, sans-serif" font-size="14" letter-spacing="0.03em">cube.drkooo.com</text>
+</svg>

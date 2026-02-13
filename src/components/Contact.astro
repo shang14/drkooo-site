@@ -1,44 +1,53 @@
 ---
+const contacts = [
+  { label: "Email", value: "hello@drkooo.com", href: "mailto:hello@drkooo.com" },
+  { label: "GitHub", value: "github.com/drkooo", href: "https://github.com/drkooo" },
+  { label: "CubeCut Demo", value: "cube.drkooo.com", href: "https://cube.drkooo.com", i18nLabel: "contact.cubecutDemo" },
+];
 ---
 
-<section id="contact" class="py-20 bg-gray-900 text-white">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Get In Touch
-      </h2>
-      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-        Have a project in mind or just want to say hi? Feel free to reach out.
-      </p>
+<section id="contact" class="section bg-alt">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <span class="badge" data-i18n="contact.badge">Contact</span>
+      <h2 class="section-title mt-4" data-i18n="contact.title">合作与沟通</h2>
+      <p class="section-subtitle mx-auto" data-i18n="contact.subtitle">如果你正在做产品升级、品牌官网改版，或需要前端与交互落地支持，可以直接联系我。</p>
     </div>
-    
-    <div class="max-w-lg mx-auto">
-      <div class="text-center">
-        <p class="text-lg mb-4">You can reach me via email:</p>
-        <a href="mailto:hello@drkooo.com" class="text-2xl font-semibold text-blue-400 hover:text-blue-300 transition-colors">
-          hello@drkooo.com
-        </a>
-        <p class="text-gray-400 mt-8">
-          I'm currently available for freelance work and collaborations.
-        </p>
-      </div>
+
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-6">
+      <article class="card p-7 reveal">
+        <h3 class="text-2xl font-semibold" data-i18n="contact.preferenceTitle">沟通偏好</h3>
+        <ul class="mt-5 space-y-3 text-sm text-secondary">
+          <li class="flex gap-2"><span class="text-accent">01.</span><span data-i18n="contact.pref1">先对齐目标与边界，再拆分迭代计划。</span></li>
+          <li class="flex gap-2"><span class="text-accent">02.</span><span data-i18n="contact.pref2">强调交付节奏和可维护实现，不做一次性“炫技页面”。</span></li>
+          <li class="flex gap-2"><span class="text-accent">03.</span><span data-i18n="contact.pref3">支持从设计细化到工程落地的协同闭环。</span></li>
+        </ul>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="mailto:hello@drkooo.com" class="btn btn-primary" data-i18n="contact.emailBtn">发邮件咨询</a>
+          <a href="https://github.com/drkooo" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="contact.githubBtn">查看 GitHub</a>
+        </div>
+      </article>
+
+      <article class="card p-7 reveal">
+        <p class="text-sm text-secondary" data-i18n="contact.directLinks">Direct Links</p>
+        <div class="mt-4 space-y-3">
+          {contacts.map((item) => (
+            <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined} class="block rounded-xl border border-primary bg-alt px-4 py-3 hover:border-[var(--accent)] transition-colors">
+              <p class="text-xs text-secondary" data-i18n={item.i18nLabel}>{item.label}</p>
+              <p class="mt-1 font-medium text-primary inline-flex items-center gap-1">
+                {item.value}
+                <svg class="w-3.5 h-3.5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6h8m0 0v8m0-8-10 10" /></svg>
+              </p>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-6 rounded-xl border border-primary bg-alt px-4 py-3">
+          <p class="text-xs text-secondary" data-i18n="contact.response">Response</p>
+          <p class="mt-1 text-sm" data-i18n="contact.responseDesc">通常在 24 小时内回复。</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
-
-<footer class="bg-black text-white py-8">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <div class="text-2xl font-bold mb-4">dr.KOoo</div>
-      <p class="text-gray-400 mb-4">Crafting digital experiences</p>
-      <div class="flex justify-center space-x-6">
-        <a href="#" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
-        <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
-        <a href="#" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-      </div>
-      <div class="mt-6 text-gray-500 text-sm">
-        © 2024 dr.KOoo. All rights reserved.
-      </div>
-    </div>
-  </div>
-</footer>

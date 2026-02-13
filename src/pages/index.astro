@@ -2,17 +2,23 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
 import Projects from '../components/Projects.astro';
-import AboutMe from '../components/AboutMe.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="dr.KOoo - 个人作品集">
+<Layout title="dr.KOoo - Full-Stack Developer & Creative Coder">
   <Navigation />
-  <main>
+  <main class="site-content">
     <Hero />
+    <About />
     <Projects />
-    <AboutMe />
+    <Skills />
+    <Experience />
     <Contact />
+    <Footer />
   </main>
 </Layout>

@@ -1,66 +1,64 @@
----
----
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden pt-6 md:pt-8">
+  <div class="absolute inset-0 pointer-events-none opacity-45">
+    <div class="absolute inset-0" style="background-image: linear-gradient(to right, color-mix(in srgb, var(--line) 70%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in srgb, var(--line) 70%, transparent) 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <div class="absolute -top-28 -left-20 w-72 h-72 rounded-full blur-3xl" style="background: var(--accent-soft);"></div>
+    <div class="absolute -bottom-24 right-0 w-80 h-80 rounded-full blur-3xl" style="background: var(--accent-soft);"></div>
+  </div>
 
-<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 pt-16">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      <!-- 文本内容 -->
-      <div class="text-center md:text-left">
-        <h1 id="hero-title" class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
-          Hi, I'm <span class="text-blue-600">dr.KOoo</span>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+    <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-end">
+      <div>
+        <span class="badge reveal"><span class="dot"></span><span data-i18n="hero.badge">Independent Developer · drkooo.com</span></span>
+        <h1 class="reveal mt-5 text-[2.15rem] sm:text-5xl md:text-6xl font-bold tracking-[-0.02em] leading-[1.14]">
+          <span data-i18n="hero.titlePrefix">打磨克制、顺滑、</span>
+          <span class="text-accent" data-i18n="hero.titleHighlight">长期可维护</span>
+          <span data-i18n="hero.titleSuffix"> 的数字产品</span>
         </h1>
-        <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-600 mb-8 max-w-xl mx-auto md:mx-0">
-          A passionate developer creating modern applications with a focus on user experience.
-        </p>
-        <div id="hero-cta" class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
-            View My Work
+        <p class="reveal mt-6 text-[1.02rem] md:text-lg text-secondary leading-[1.9] max-w-2xl" data-i18n="hero.desc">我专注于全栈开发与交互体验，擅长把复杂问题拆成清晰可落地的产品路径。从视觉细节到工程质量，都以“上线可用、长期可迭代”为标准。</p>
+
+        <div class="reveal mt-8 flex flex-wrap gap-3">
+          <a href="https://cube.drkooo.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <span data-i18n="hero.ctaDemo">体验 CubeCut Demo</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
           </a>
-          <a href="#contact" class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300">
-            Get In Touch
-          </a>
+          <a href="#projects" class="btn btn-outline" data-i18n="hero.ctaProjects">查看项目</a>
+          <a href="#contact" class="btn btn-outline" data-i18n="hero.ctaContact">联系我</a>
         </div>
+        <p class="reveal mt-4 text-xs text-secondary" data-i18n="hero.note">适合品牌官网改版、互动体验页、可视化产品落地。</p>
       </div>
-      
-      <!-- 3D 模型占位符 -->
-      <div id="hero-3d" class="mt-12 md:mt-0">
-        <div class="relative mx-auto w-72 h-72 md:w-96 md:h-96">
-          <div class="w-full h-full bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
-            <div class="text-white text-center">
-              <div class="text-4xl mb-2">🧊</div>
-              <div class="text-lg">3D Model Placeholder</div>
-            </div>
+
+      <aside class="reveal card p-6 md:p-7 bg-card">
+        <a href="https://cube.drkooo.com" target="_blank" rel="noopener noreferrer" class="cover-frame block">
+          <img src="/images/cubecut-cover.svg" alt="CubeCut demo cover" class="w-full h-auto" loading="lazy" />
+          <div class="cover-overlay">
+            <span class="text-xs tracking-wide uppercase" data-i18n="hero.coverPlayable">Playable Demo</span>
+            <span class="inline-flex items-center gap-1 text-xs font-medium">
+              <span data-i18n="hero.coverVisit">Visit</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6h8m0 0v8m0-8-10 10" /></svg>
+            </span>
+          </div>
+        </a>
+        <p class="text-xs tracking-wider uppercase text-secondary" data-i18n="hero.nowBuilding">Now Building</p>
+        <h2 class="mt-3 text-2xl font-semibold">CubeCut</h2>
+        <p class="mt-3 text-secondary text-sm leading-relaxed" data-i18n="hero.cardDesc">面向几何教学与探索的 3D 可视化工具，支持实时切割与形态观察，已上线可直接体验。</p>
+        <div class="mt-6 grid grid-cols-2 gap-3 text-sm">
+          <div class="rounded-xl border border-primary p-3 bg-alt">
+            <p class="text-secondary" data-i18n="hero.stack">Stack</p>
+            <p class="mt-1 font-medium">Three.js / WebGL</p>
+          </div>
+          <div class="rounded-xl border border-primary p-3 bg-alt">
+            <p class="text-secondary" data-i18n="hero.status">Status</p>
+            <p class="mt-1 font-medium" data-i18n="hero.statusOnline">Online</p>
+          </div>
+          <div class="rounded-xl border border-primary p-3 bg-alt col-span-2">
+            <p class="text-secondary" data-i18n="hero.demo">Demo</p>
+            <a class="mt-1 inline-flex items-center gap-1 font-medium text-accent hover:text-[var(--accent-strong)]" href="https://cube.drkooo.com" target="_blank" rel="noopener noreferrer">
+              cube.drkooo.com
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6h8m0 0v8m0-8-10 10" /></svg>
+            </a>
           </div>
         </div>
-      </div>
+      </aside>
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (window.gsap) {
-      const tl = window.gsap.timeline();
-      
-      tl.fromTo("#hero-title", 
-        { y: 50, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      )
-      .fromTo("#hero-subtitle", 
-        { y: 30, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 
-        "-=0.5"
-      )
-      .fromTo("#hero-cta", 
-        { y: 30, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 
-        "-=0.3"
-      )
-      .fromTo("#hero-3d", 
-        { y: 50, opacity: 0, scale: 0.8 }, 
-        { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power3.out" }, 
-        "-=0.3"
-      );
-    }
-  });
-</script>

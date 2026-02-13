@@ -1,83 +1,105 @@
 ---
+const projects = [
+  {
+    title: "CubeCut",
+    subtitle: "3D Geometry Visual Lab",
+    description: "将立方体切割过程可视化，帮助用户从动态视角理解几何结构，面向教学与兴趣探索场景。",
+    tags: ["Three.js", "WebGL", "Geometry", "Astro"],
+    link: "https://cube.drkooo.com",
+    github: "https://github.com/drkooo/cubecut",
+    featured: true,
+  },
+  {
+    title: "Portfolio System",
+    subtitle: "Personal Branding Site",
+    description: "围绕个人品牌打造的模块化站点，强调信息层级、可维护样式体系与轻量性能。",
+    tags: ["Astro", "Tailwind", "Design System"],
+    link: "https://drkooo.com",
+    github: "https://github.com/drkooo",
+    featured: false,
+  },
+  {
+    title: "Interactive Prototypes",
+    subtitle: "UI Motion Experiments",
+    description: "持续输出交互原型与微体验实验，验证从视觉语言到用户反馈的完整链路。",
+    tags: ["Motion", "Interaction", "Frontend"],
+    link: "https://github.com/drkooo",
+    github: "https://github.com/drkooo",
+    featured: false,
+  },
+];
 ---
 
-<section id="projects" class="py-20 bg-white">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        Projects
-      </h2>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        A selection of my work. More projects coming soon.
-      </p>
+<section id="projects" class="section bg-primary">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <span class="badge" data-i18n="projects.badge">Projects</span>
+      <h2 class="section-title mt-4" data-i18n="projects.title">项目与产品实践</h2>
+      <p class="section-subtitle mx-auto" data-i18n="projects.subtitle">聚焦可上线、可复用、可持续迭代的项目，而不是只停留在视觉演示。</p>
     </div>
-    
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <!-- CubeCut 3D 模型占位符 -->
-      <div class="project-card-3d">
-        <div class="relative mx-auto w-72 h-72 md:w-80 md:h-80">
-          <div class="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg flex items-center justify-center shadow-2xl">
-            <div class="text-white text-center">
-              <div class="text-4xl mb-2">🧊🔪</div>
-              <div class="text-lg">CubeCut 3D Demo</div>
+
+    <article class="card p-7 md:p-10 reveal">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-wider text-secondary" data-i18n="projects.featured">Featured Project</p>
+          <h3 class="mt-2 text-2xl md:text-3xl font-semibold tracking-[-0.01em]">{projects[0].title}</h3>
+          <p class="mt-1 text-secondary">{projects[0].subtitle}</p>
+          <p class="mt-5 text-secondary leading-[1.9]" data-i18n="projects.cubecutDesc">{projects[0].description}</p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            {projects[0].tags.map((tag) => (
+              <span class="px-3 py-1 rounded-full text-xs bg-alt border border-primary text-secondary">{tag}</span>
+            ))}
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href={projects[0].link} target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projects.liveDemo">在线 Demo</a>
+            <a href={projects[0].github} target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-i18n="projects.source">源码仓库</a>
+          </div>
+        </div>
+
+        <div>
+          <a href="https://cube.drkooo.com" target="_blank" rel="noopener noreferrer" class="cover-frame block">
+            <img src="/images/cubecut-cover.svg" alt="CubeCut project preview" class="w-full h-auto" loading="lazy" />
+            <div class="cover-overlay">
+              <span class="text-xs tracking-wide uppercase" data-i18n="projects.coverLivePreview">Live Preview</span>
+              <span class="inline-flex items-center gap-1 text-xs font-medium">
+                <span data-i18n="projects.coverOpen">Open</span>
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6h8m0 0v8m0-8-10 10" /></svg>
+              </span>
+            </div>
+          </a>
+          <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+            <div class="rounded-xl border border-primary bg-alt p-3">
+              <p class="text-secondary" data-i18n="projects.rendering">Rendering</p>
+              <p class="font-medium mt-1" data-i18n="projects.renderingValue">Real-time 3D</p>
+            </div>
+            <div class="rounded-xl border border-primary bg-alt p-3">
+              <p class="text-secondary" data-i18n="projects.focus">Focus</p>
+              <p class="font-medium mt-1" data-i18n="projects.focusValue">Geometry Learning</p>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- CubeCut 介绍 -->
-      <div class="project-card-info">
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">
-          CubeCut
-        </h3>
-        <p class="text-gray-600 mb-6">
-          An application for demonstrating 3D cube slicing and geometric visualization. Perfect for students and educators in mathematics.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Mathematics</span>
-          <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">3D Visualization</span>
-          <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Education</span>
-        </div>
-        <a href="#" class="font-semibold text-blue-600 hover:text-blue-800 transition-colors">
-          View Details →
-        </a>
-      </div>
+    </article>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-7">
+      {projects.slice(1).map((project) => (
+        <article class="card p-6 reveal">
+          <p class="text-sm text-secondary">{project.subtitle}</p>
+          <h3 class="text-xl font-semibold mt-1">{project.title}</h3>
+          <p class="mt-3 text-secondary text-sm leading-7" data-i18n={project.title === "Portfolio System" ? "projects.portfolioDesc" : "projects.prototypesDesc"}>{project.description}</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span class="px-2.5 py-1 rounded-md text-xs bg-alt border border-primary text-secondary">{tag}</span>
+            ))}
+          </div>
+          <div class="mt-5 flex gap-3">
+            <a href={project.link} target="_blank" rel="noopener noreferrer" class="btn btn-outline text-xs" data-i18n="projects.visit">访问</a>
+            <a href={project.github} target="_blank" rel="noopener noreferrer" class="btn btn-outline text-xs" data-i18n="projects.source">源码</a>
+          </div>
+        </article>
+      ))}
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (window.gsap && window.ScrollTrigger) {
-      const tl = window.gsap.timeline({
-        scrollTrigger: {
-          trigger: "#projects",
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse"
-        }
-      });
-
-      tl.fromTo(".project-card-3d", {
-        x: -100,
-        opacity: 0,
-        rotateY: 15
-      }, {
-        x: 0,
-        opacity: 1,
-        rotateY: 0,
-        duration: 1,
-        ease: "power3.out"
-      })
-      .fromTo(".project-card-info", {
-        x: 100,
-        opacity: 0
-      }, {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out"
-      }, "-=0.7");
-    }
-  });
-</script>
